@@ -4,11 +4,11 @@ from src.jobs import read
 def get_unique_job_types(path):
     datas = read("./src/jobs.csv")
 
-    column = []
-    for data in datas:
-        column.append(data.get("job_type"))
-
-    return column
+    novo = []
+    for job in datas:
+        if job["job_type"] not in novo:
+            novo.append(job["job_type"])
+    return novo
 
 
 def filter_by_job_type(jobs, job_type):
