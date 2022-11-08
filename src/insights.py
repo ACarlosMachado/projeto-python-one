@@ -62,11 +62,11 @@ def get_max_salary(path):
 
     list_max = []
     for job in datas:
-        if job["max_salary"] not in datas and job["max_salary"] != '':
-            list_max.append(job["max_salary"])
-    max_salary = max(list_max, key=int)
+        if job["max_salary"] not in datas and job["max_salary"].isnumeric():
+            to_number = int(job["max_salary"])
+            list_max.append(to_number)
 
-    return max_salary
+    return (max(list_max))
     pass
 
 
