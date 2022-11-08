@@ -1,8 +1,8 @@
-import jobs
+from src.jobs import read
 
 
 def get_unique_job_types(path):
-    datas = jobs.read("./src/jobs.csv")
+    datas = read("./src/jobs.csv")
 
     column = []
     for data in datas:

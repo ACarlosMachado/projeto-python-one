@@ -10,6 +10,3 @@ def read(path):
         for job in jobs:
             result.append(job)
         return result
-
-
-read("./src/jobs.csv")
