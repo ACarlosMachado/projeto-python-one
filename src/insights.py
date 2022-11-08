@@ -71,20 +71,15 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    datas = read(path)
 
-    Must call `read`
+    list_min = []
+    for job in datas:
+        if job["min_salary"] not in datas and job["min_salary"].isnumeric():
+            to_number = int(job["min_salary"])
+            list_min.append(to_number)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    return (min(list_min))
     pass
 
 
