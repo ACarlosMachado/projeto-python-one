@@ -34,7 +34,7 @@ def get_unique_industries(path):
 
     industries = []
     for job in datas:
-        if job["industry"] not in industries:
+        if job["industry"] not in industries and job["industry"] != '':
             industries.append(job["industry"])
     return industries
 
