@@ -2,7 +2,7 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    datas = read("./src/jobs.csv")
+    datas = read(path)
 
     novo = []
     for job in datas:
@@ -30,21 +30,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    datas = read(path)
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    industries = []
+    for job in datas:
+        if job["industry"] not in industries:
+            industries.append(job["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
