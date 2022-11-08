@@ -59,9 +59,9 @@ def matches_salary_range(job, salary):
     if (
         "max_salary" not in job or
         "min_salary" not in job or
-        isinstance(job["max_salary"], int) is False or
-        isinstance(job["min_salary"], int) is False or
-        isinstance(salary, int) is False or
+        type(job["max_salary"]) != int or
+        type(job["min_salary"]) != int or
+        type(salary) != int or
         job["max_salary"] < job["min_salary"]
     ):
         raise ValueError('Dados inválidos')
@@ -69,18 +69,31 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    filtered_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_jobs.append(job)
+        except ValueError:
+            ...
+    return filtered_jobs
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+# for job in jobs:
+#         try:
+#             if matches_salary_range(job, salary) is True:
+#                 filtered_jobs.append(job)
+#         except ValueError:
+#             print(ValueError)
+#         finally:
+#             return filtered_jobs
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+# if (
+#         "max_salary" not in job or
+#         "min_salary" not in job or
+#         isinstance(job["max_salary"], int) is False or
+#         isinstance(job["min_salary"], int) is False or
+#         isinstance(salary, int) is False or
+#         job["max_salary"] < job["min_salary"]
+#     ):
+#         raise ValueError('Dados inválidos')
+#     return job["min_salary"] <= salary <= job["max_salary"]
